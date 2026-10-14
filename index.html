@@ -1,0 +1,619 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/vaibhav-logo.png" />
+    
+    <!-- Primary SEO Meta Tags -->
+    <title>Vaibhav — System Design &amp; Backend Engineering (@vaibhav.codes)</title>
+    <meta name="title" content="Vaibhav — System Design &amp; Backend Engineering (@vaibhav.codes)" />
+    <meta name="description" content="Production-tested backend architectures, distributed systems, and FAANG System Design explained with precision by @vaibhav.codes. 100K+ developer community." />
+    <meta name="author" content="Vaibhav" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://vaibhav.codes/" />
+    <meta property="og:title" content="Vaibhav — System Design &amp; Backend Engineering" />
+    <meta property="og:description" content="Thoughtful architecture. Built for production scale. 100K+ developers learning backend the right way." />
+    <meta property="og:image" content="/vaibhav-profile.jpg" />
+
+    <!-- Google Fonts: Inter & JetBrains Mono for Apple Precision -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- ==============================================
+         SITE NAVIGATION (Matching Nirav Gohel ng. Header)
+         Clean border, monogram mark, centered links, dark capsule button
+         ============================================== -->
+    <header class="site-header">
+      <div class="nav-container">
+        <!-- Monogram Logo -->
+        <a href="#hero" class="nav-brand" aria-label="Vaibhav Codes Home">
+          <img src="/vaibhav-logo.png" alt="Vaibhav Codes" class="brand-nav-logo" />
+          <div class="brand-monogram">
+            <span class="mono-text">vc<span class="dot-accent">.</span></span>
+          </div>
+          <span class="brand-full-name">Vaibhav</span>
+        </a>
+
+        <!-- Center Navigation Links -->
+        <nav class="nav-menu" aria-label="Main Navigation">
+          <a href="#about" class="nav-link">About</a>
+          <a href="#focus" class="nav-link">Focus</a>
+          <a href="#selected-work" class="nav-link">Projects</a>
+          <a href="#skills" class="nav-link">Skills</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+
+        <!-- Right Pill Capsule CTA -->
+        <div class="nav-cta-wrapper">
+          <a href="https://www.instagram.com/vaibhav.codes" target="_blank" rel="noopener noreferrer" class="btn-capsule-dark">
+            <span>Follow</span>
+          </a>
+
+          <!-- Mobile Hamburger -->
+          <button id="mobile-toggle" class="mobile-toggle-btn" aria-label="Toggle navigation menu">
+            <svg class="svg-icon hamburger-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+            <svg class="svg-icon close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Dropdown -->
+      <div id="mobile-menu" class="mobile-menu">
+        <a href="#about" class="mobile-link">About</a>
+        <a href="#focus" class="mobile-link">Focus</a>
+        <a href="#selected-work" class="mobile-link">Projects</a>
+        <a href="#skills" class="mobile-link">Skills</a>
+        <a href="#contact" class="mobile-link">Contact</a>
+        <a href="https://www.instagram.com/vaibhav.codes" target="_blank" rel="noopener noreferrer" class="btn-capsule-dark mobile-btn">
+          Follow @vaibhav.codes
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <!-- ==============================================
+           HERO SECTION (Matching Nirav Gohel Hero 1:1)
+           Eyebrow name & title, huge 2-tone headline, clean subtitle,
+           Apple blue pill button + outlined secondary pill button
+           ============================================== -->
+      <section id="hero" class="hero-section">
+        <div class="page-container hero-container text-center">
+          <!-- Small Eyebrow (Nirav style) -->
+          <div class="hero-eyebrow">
+            <span class="hero-name">Vaibhav</span>
+            <span class="hero-role">System Design &amp; Backend Engineer</span>
+          </div>
+
+          <!-- Giant Two-Tone Headline -->
+          <h1 class="hero-headline">
+            <span class="headline-primary">Thoughtful software.</span><br />
+            <span class="headline-secondary">Built for the real world.</span>
+          </h1>
+
+          <!-- Clean Subtitle -->
+          <p class="hero-lead">
+            I build dependable backend systems and distributed architectures.<br class="lead-break" />
+            From a well-designed idempotency key to a multi-region event pipeline.
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="hero-cta-group">
+            <a href="https://www.instagram.com/vaibhav.codes" target="_blank" rel="noopener noreferrer" class="btn-pill-primary">
+              <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+              <span>Follow on Instagram</span>
+            </a>
+            <a href="#selected-work" class="btn-pill-secondary">
+              <span>View selected work</span>
+            </a>
+          </div>
+
+          <!-- Availability Tag -->
+          <div class="hero-availability">
+            <span>Available for backend architecture &amp; system design consulting &bull; Daily at 8:00 PM IST</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================
+           METRICS BANNER (Matching Nirav 4-column container)
+           ============================================== -->
+      <section class="metrics-section">
+        <div class="page-container">
+          <div class="metrics-grid">
+            <div class="metric-col">
+              <div class="metric-num">100K+</div>
+              <div class="metric-desc">Developers learning backend &amp; system design</div>
+            </div>
+            <div class="metric-col">
+              <div class="metric-num">500+</div>
+              <div class="metric-desc">Production breakdowns &amp; system architectures</div>
+            </div>
+            <div class="metric-col">
+              <div class="metric-num">15M+</div>
+              <div class="metric-desc">Cumulative views on engineering guides &amp; reels</div>
+            </div>
+            <div class="metric-col last-col">
+              <div class="metric-num">Idea <span class="num-italic">to</span> scale</div>
+              <div class="metric-desc">End-to-end distributed systems with Kafka &amp; AWS</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================
+           ABOUT ME SECTION (Matching Nirav 2-Column Layout)
+           Left: Eyebrow + 2-tone huge title ("Good engineering. Lasting value.")
+           Right: Narrative typography + key philosophy tags
+           ============================================== -->
+      <section id="about" class="about-section">
+        <div class="page-container about-grid">
+          <!-- Left Column -->
+          <div class="about-left">
+            <span class="section-label">ABOUT ME</span>
+            <h2 class="section-two-tone-title">
+              <span class="line-dark">Good engineering.</span>
+              <span class="line-muted">Lasting value.</span>
+            </h2>
+          </div>
+
+          <!-- Right Column -->
+          <div class="about-right">
+            <h3 class="about-tagline">Reliable systems start with thoughtful decisions.</h3>
+            <p class="about-p">
+              With hands-on experience in backend engineering and distributed architectures, I build high-throughput microservices, design event-driven queues, and break down complex concepts into digestible, production-tested mental models. My work bridges the gap between theoretical system design and how real companies scale under millions of concurrent requests.
+            </p>
+            <p class="about-p">
+              From zero-downtime database indexing to transactional outboxes, I care about the details that make software dependable: p99 latency SLAs, idempotent payment processing, cache consistency boundaries, and graceful degradation during network partitions.
+            </p>
+            <div class="about-pillars">
+              <span class="pillar-tag">Backend thinking</span>
+              <span class="pillar-tag">Distributed execution</span>
+              <span class="pillar-tag">Production mindset</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================
+           CURRENT FOCUS / EXPERIENCE SECTION (Matching Nirav)
+           Left: Role timeline & status
+           Right: Title, 2 Stat cards in #F5F5F7, bullet points, tags
+           ============================================== -->
+      <section id="focus" class="focus-section">
+        <div class="page-container focus-grid">
+          <!-- Left Column -->
+          <div class="focus-left">
+            <span class="section-label">CURRENT FOCUS</span>
+            <div class="focus-timeline">
+              <div class="timeline-period">2024 &mdash; Present</div>
+              <div class="timeline-meta">System Design &bull; @vaibhav.codes</div>
+            </div>
+          </div>
+
+          <!-- Right Column -->
+          <div class="focus-right">
+            <h2 class="focus-title">Senior Backend &amp; Distributed Systems Creator</h2>
+            <div class="focus-org">
+              <a href="https://www.instagram.com/vaibhav.codes" target="_blank" rel="noopener noreferrer" class="org-link">
+                @vaibhav.codes &bull; 100K+ Developer Community
+              </a>
+            </div>
+            <p class="focus-description">
+              Educating over 100,000 software engineers on production-ready backend architectures, distributed systems patterns, database indexing internals, and FAANG-scale system design.
+            </p>
+
+            <!-- Stat Highlight Cards (Nirav's 93% efficiency & 2000+ users cards) -->
+            <div class="focus-cards-grid">
+              <div class="stat-highlight-card">
+                <div class="stat-highlight-value">99.99% Reliability</div>
+                <div class="stat-highlight-text">
+                  Architecting fault-tolerant event pipelines with Kafka, DLQ, and exponential backoff.
+                </div>
+              </div>
+              <div class="stat-highlight-card">
+                <div class="stat-highlight-value">100K+ Developers</div>
+                <div class="stat-highlight-text">
+                  Active global community mastering system design, low-latency caching, and API resilience.
+                </div>
+              </div>
+            </div>
+
+            <!-- Bullet Points -->
+            <ul class="focus-bullet-list">
+              <li>
+                <span class="bullet-dot"></span>
+                <span>Eliminated the dual-write hazard using the Transactional Outbox pattern and Debezium CDC streaming.</span>
+              </li>
+              <li>
+                <span class="bullet-dot"></span>
+                <span>Prevented cache stampedes and thundering herd at 100K+ RPS with Bloom filters and mutex locks.</span>
+              </li>
+              <li>
+                <span class="bullet-dot"></span>
+                <span>Optimized PostgreSQL query execution plans, concurrent B-tree indexing, and PgBouncer connection pooling.</span>
+              </li>
+              <li>
+                <span class="bullet-dot"></span>
+                <span>Designed idempotent webhook and payment ingestion pipelines with Redis distributed leases.</span>
+              </li>
+            </ul>
+
+            <!-- Skill Tags -->
+            <div class="pill-tags-row">
+              <span class="tag-chip">Distributed Systems</span>
+              <span class="tag-chip">Kafka</span>
+              <span class="tag-chip">Redis</span>
+              <span class="tag-chip">PostgreSQL</span>
+              <span class="tag-chip">System Design</span>
+              <span class="tag-chip">AWS</span>
+              <span class="tag-chip">Docker</span>
+              <span class="tag-chip">gRPC</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================
+           SELECTED WORK / PROJECTS (Matching Nirav 1:1)
+           Title: "Selected work." with "Explore Instagram Feed ↗"
+           2 Large Cards with mock preview panels, tags, bullets
+           ============================================== -->
+      <section id="selected-work" class="projects-section">
+        <div class="page-container">
+          <div class="projects-header-row">
+            <h2 class="projects-heading">Selected work.</h2>
+            <a href="https://www.instagram.com/vaibhav.codes" target="_blank" rel="noopener noreferrer" class="link-with-arrow">
+              <span>Explore Instagram Feed</span>
+              <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </a>
+          </div>
+
+          <div class="projects-cards-grid">
+            <!-- Project Card 1: Transactional Outbox -->
+            <article class="project-card">
+              <!-- Mock UI Visual Panel -->
+              <div class="project-visual-panel">
+                <div class="panel-header-badge">
+                  <span class="badge-dot"></span>
+                  EVENT-DRIVEN INFRASTRUCTURE
+                </div>
+                <div class="panel-mock-window">
+                  <div class="mock-top-bar">
+                    <span class="mock-tag-live">Active Outbox Broker</span>
+                    <span class="mock-cluster">Cluster: us-east-1</span>
+                  </div>
+                  <div class="mock-metrics-row">
+                    <div class="mock-metric-cell">
+                      <span class="cell-label">STATUS</span>
+                      <span class="cell-val text-green">202 Accepted</span>
+                    </div>
+                    <div class="mock-metric-cell">
+                      <span class="cell-label">INGESTION</span>
+                      <span class="cell-val">4.2ms</span>
+                    </div>
+                    <div class="mock-metric-cell">
+                      <span class="cell-label">KAFKA DLQ</span>
+                      <span class="cell-val">0 Errors</span>
+                    </div>
+                    <div class="mock-metric-cell">
+                      <span class="cell-label">DEDUPLICATION</span>
+                      <span class="cell-val text-blue">100% Guaranteed</span>
+                    </div>
+                  </div>
+                  <div class="mock-code-strip">
+                    <code>INSERT INTO orders (id, total) VALUES ($1, $2);<br />INSERT INTO outbox_events (event_id, payload) VALUES ($3, $4);</code>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Project Content Details -->
+              <div class="project-content">
+                <div class="project-category-tag">EVENT-DRIVEN INFRASTRUCTURE</div>
+                <h3 class="project-title">HookRelay &bull; Transactional Outbox.</h3>
+                <div class="project-subtitle">Industrial Webhook Delivery &amp; Observability Engine</div>
+                <p class="project-summary">
+                  An industrial-grade transactional outbox architecture built to guarantee at-least-once event delivery under real-world network partitions and database failures. Features transactional outbox persistence, HMAC-SHA256 signatures, and automated exponential backoff.
+                </p>
+                <ul class="project-bullets">
+                  <li>Transactional outbox ingestion with atomic HTTP 202 Accepted response</li>
+                  <li>Cryptographic HMAC-SHA256 signing &amp; anti-replay verification</li>
+                  <li>Idempotency key deduplication with Redis distributed locking</li>
+                </ul>
+
+                <div class="project-card-footer">
+                  <button class="btn-card-action" data-demo="outbox">
+                    <span>Inspect System Breakdown</span>
+                    <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project Card 2: Ultra-Scale Redis Layer -->
+            <article class="project-card">
+              <!-- Mock UI Visual Panel -->
+              <div class="project-visual-panel dark-variant">
+                <div class="panel-header-badge">
+                  <span class="badge-dot green-dot"></span>
+                  HIGH-CONCURRENCY CACHING
+                </div>
+                <div class="panel-mock-window">
+                  <div class="mock-top-bar">
+                    <span class="mock-tag-live">Redis Cluster &bull; 100K RPS</span>
+                    <span class="mock-cluster">Bloom Filter: Armed</span>
+                  </div>
+                  <div class="mock-metrics-row">
+                    <div class="mock-metric-cell">
+                      <span class="cell-label">CACHE HIT RATIO</span>
+                      <span class="cell-val text-green">99.4%</span>
+                    </div>
+                    <div class="mock-metric-cell">
+                      <span class="cell-label">P99 LATENCY</span>
+                      <span class="cell-val">0.8ms</span>
+                    </div>
+                    <div class="mock-metric-cell">
+                      <span class="cell-label">STAMPEDE SHIELD</span>
+                      <span class="cell-val text-blue">Mutex Locked</span>
+                    </div>
+                    <div class="mock-metric-cell">
+                      <span class="cell-label">PENETRATION</span>
+                      <span class="cell-val text-purple">0 DB Leaks</span>
+                    </div>
+                  </div>
+                  <div class="mock-code-strip">
+                    <code>// Probabilistic Early Refresh (XFetch)<br />if (time() - delta * beta * log(rand()) &gt; expiry) refreshCacheAsync();</code>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Project Content Details -->
+              <div class="project-content">
+                <div class="project-category-tag">DATA ENGINEERING &amp; CACHING</div>
+                <h3 class="project-title">Ultra-Scale Redis Layer.</h3>
+                <div class="project-subtitle">Low-Latency Caching, Cache Stampede &amp; Penetration Defense</div>
+                <p class="project-summary">
+                  An enterprise-grade caching architecture designed for read-heavy microservices handling 100k+ RPS. Implements probabilistic early cache refresh (XFetch algorithm) combined with Bloom filter guards to prevent database thundering herd during traffic spikes.
+                </p>
+                <ul class="project-bullets">
+                  <li>Bloom filter guard rejecting 100% of non-existent entity lookups</li>
+                  <li>Distributed mutex-locked background refresh preventing DB stampede</li>
+                  <li>Multi-region read replica synchronization with automated failover</li>
+                </ul>
+
+                <div class="project-card-footer">
+                  <button class="btn-card-action" data-demo="caching">
+                    <span>Inspect System Breakdown</span>
+                    <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================
+           SKILLS SECTION (Matching Nirav 3x2 Grid 1:1)
+           Clean top border, clean titles, technology list,
+           bottom domain track line
+           ============================================== -->
+      <section id="skills" class="skills-section">
+        <div class="page-container">
+          <div class="skills-grid">
+            <!-- 1. Backend -->
+            <div class="skill-category-card">
+              <h3 class="skill-cat-title">Backend Architecture</h3>
+              <p class="skill-cat-items">
+                Python &bull; Go &bull; Java &bull; Node.js<br />
+                REST APIs &bull; gRPC &bull; Microservices
+              </p>
+            </div>
+
+            <!-- 2. Distributed Systems -->
+            <div class="skill-category-card">
+              <h3 class="skill-cat-title">Distributed Systems</h3>
+              <p class="skill-cat-items">
+                Apache Kafka &bull; RabbitMQ &bull; Redis<br />
+                AWS SQS &bull; Event Streaming &bull; BullMQ
+              </p>
+            </div>
+
+            <!-- 3. Database & Storage -->
+            <div class="skill-category-card">
+              <h3 class="skill-cat-title">Database &amp; Storage</h3>
+              <p class="skill-cat-items">
+                PostgreSQL &bull; SQL Optimization &bull; MongoDB<br />
+                DynamoDB &bull; Elasticsearch &bull; Sharding
+              </p>
+            </div>
+
+            <!-- 4. Cloud & Delivery -->
+            <div class="skill-category-card">
+              <h3 class="skill-cat-title">Cloud &amp; Delivery</h3>
+              <p class="skill-cat-items">
+                Docker &bull; AWS EC2 / S3 / RDS<br />
+                Nginx &bull; Kubernetes &bull; CI/CD Pipelines
+              </p>
+            </div>
+
+            <!-- 5. System Design Patterns -->
+            <div class="skill-category-card">
+              <h3 class="skill-cat-title">System Design Patterns</h3>
+              <p class="skill-cat-items">
+                CQRS &bull; Transactional Outbox &bull; Circuit Breaker<br />
+                Idempotency Keys &bull; Rate Limiting &bull; Saga
+              </p>
+            </div>
+
+            <!-- 6. Currently Exploring -->
+            <div class="skill-category-card">
+              <div class="learning-eyebrow">CURRENTLY EXPLORING</div>
+              <h3 class="skill-cat-title">Distributed Consensus</h3>
+              <p class="skill-cat-items">
+                Raft Consensus &bull; Vector Databases<br />
+                High-Throughput Rust Systems
+              </p>
+            </div>
+          </div>
+
+          <!-- Bottom Domain Track (Nirav's signature line) -->
+          <div class="domain-track-row">
+            <span class="track-label">Interface</span>
+            <div class="track-line"></div>
+            <span class="track-label">API &amp; backend</span>
+            <div class="track-line"></div>
+            <span class="track-label">Data &amp; queues</span>
+            <div class="track-line"></div>
+            <span class="track-label">Infrastructure</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================
+           BOTTOM SECTION: ABOUT & CONTACT CARD
+           (Matching Nirav's Dark "Your next challenge" Card + User's Character Image!)
+           ============================================== -->
+      <section id="contact" class="connect-section">
+        <div class="page-container">
+          <div class="connect-card-dark">
+            <span class="connect-eyebrow">LET'S CONNECT</span>
+            <h2 class="connect-headline">
+              <span class="headline-light">Your next architecture.</span><br />
+              <span class="headline-dim">Let's build it together.</span>
+            </h2>
+
+            <!-- Vaibhav's Character Profile Card (Integrated cleanly in bottom section) -->
+            <div class="creator-profile-badge">
+              <div class="creator-avatar-wrap">
+                <img src="/vaibhav-profile.jpg" alt="Vaibhav Creator Portrait" class="creator-avatar-img" />
+                <span class="creator-status-indicator" title="Active on Instagram"></span>
+              </div>
+              <div class="creator-badge-info">
+                <div class="creator-name-row">
+                  <span class="creator-name">Vaibhav</span>
+                  <span class="creator-handle">@vaibhav.codes</span>
+                </div>
+                <div class="creator-meta">
+                  100K+ Devs Community &bull; Daily breakdowns at 8:00 PM IST
+                </div>
+              </div>
+            </div>
+
+            <p class="connect-lead">
+              Open to backend architecture collaborations, technical consulting, and developer workshops.<br />
+              Let's talk about what you're building.
+            </p>
+
+            <!-- Pill CTA Buttons -->
+            <div class="connect-cta-group">
+              <a href="https://www.instagram.com/vaibhav.codes" target="_blank" rel="noopener noreferrer" class="btn-pill-white">
+                <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+                <span>Message on Instagram</span>
+              </a>
+
+              <button id="copy-email-btn" class="btn-pill-outline-dark" data-email="vaibhavcodes@gmail.com">
+                <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <span id="copy-email-text">Copy Email</span>
+              </button>
+            </div>
+
+            <!-- Social Links Strip -->
+            <div class="connect-social-links">
+              <a href="https://www.instagram.com/vaibhav.codes" target="_blank" rel="noopener noreferrer" class="social-text-link">
+                Instagram (@vaibhav.codes)
+              </a>
+              <span class="social-sep">&bull;</span>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-text-link">
+                LinkedIn
+              </a>
+              <span class="social-sep">&bull;</span>
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-text-link">
+                GitHub
+              </a>
+              <span class="social-sep">&bull;</span>
+              <a href="https://t.me" target="_blank" rel="noopener noreferrer" class="social-text-link">
+                Telegram Community
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ==============================================
+         FOOTER
+         Minimal, Apple typography
+         ============================================== -->
+    <footer class="site-footer">
+      <div class="page-container footer-container">
+        <div class="footer-left">
+          <span>&copy; 2026 Vaibhav Codes. All rights reserved.</span>
+        </div>
+        <div class="footer-right">
+          <span>Designed with Apple precision &bull; Built for production scale</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ==============================================
+         BREAKDOWN MODAL (INTERACTIVE SYSTEM LAB)
+         ============================================== -->
+    <div id="breakdown-modal" class="modal-overlay" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-header">
+          <div class="modal-header-info">
+            <span id="modal-eyebrow" class="modal-badge">ARCHITECTURE BREAKDOWN</span>
+            <h3 id="modal-title" class="modal-heading">Transactional Outbox Engine</h3>
+          </div>
+          <button id="modal-close-btn" class="modal-close" aria-label="Close modal">
+            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body" id="modal-body-content">
+          <!-- Populated dynamically via main.js -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notification (Dynamic Pill) -->
+    <div id="toast" class="toast-pill" role="status" aria-live="polite"></div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
