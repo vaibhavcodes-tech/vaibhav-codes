@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (copyBtn) {
     copyBtn.addEventListener('click', async () => {
-      const email = copyBtn.getAttribute('data-email') || 'vaibhavcodes@gmail.com';
+      const email = copyBtn.getAttribute('data-email') || 'vaibhav.codes.tech@gmail.com';
       try {
         await navigator.clipboard.writeText(email);
         triggerConfetti();
@@ -195,6 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     `;
 
+    modal.style.display = 'flex';
     modal.classList.add('open');
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
@@ -205,6 +206,11 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.classList.remove('open');
     modal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+    setTimeout(() => {
+      if (!modal.classList.contains('open')) {
+        modal.style.display = 'none';
+      }
+    }, 250);
   }
 
   document.querySelectorAll('[data-demo]').forEach(btn => {
@@ -239,5 +245,10 @@ document.addEventListener('DOMContentLoaded', () => {
     igBtn.addEventListener('click', () => {
       triggerConfetti();
     });
+  }
+  // Dynamic Current Year in Footer
+  const yearEl = document.getElementById('current-year');
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
   }
 });

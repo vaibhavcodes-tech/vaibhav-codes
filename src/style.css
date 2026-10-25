@@ -158,6 +158,25 @@ button {
   color: var(--text-dark);
 }
 
+.brand-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  letter-spacing: -0.025em;
+  display: inline-flex;
+  align-items: center;
+  transition: var(--transition-fast);
+}
+
+.brand-name:hover {
+  opacity: 0.85;
+}
+
+.brand-name .dot-accent {
+  color: var(--accent-blue);
+  font-weight: 800;
+}
+
 .nav-menu {
   display: flex;
   align-items: center;
@@ -1186,11 +1205,16 @@ button {
 .footer-container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  text-align: center;
   font-size: 0.88rem;
   color: var(--text-secondary);
-  flex-wrap: wrap;
-  gap: 16px;
+  width: 100%;
+}
+
+.footer-center {
+  width: 100%;
+  text-align: center;
 }
 
 /* ==========================================================================
@@ -1202,7 +1226,7 @@ button {
   background-color: rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(8px);
   z-index: 200;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   padding: 24px;
@@ -1212,7 +1236,9 @@ button {
 }
 
 .modal-overlay.open {
-  opacity: 1;
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
   pointer-events: auto;
 }
 
