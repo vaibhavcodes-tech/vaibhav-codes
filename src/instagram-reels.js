@@ -181,19 +181,28 @@ export function initInstagramReels({ showToast, triggerConfetti }) {
   }
 
   function updateDynamicMetrics(profile, totalPosts) {
-    const followersEl = document.getElementById('metric-followers-num');
     const guidesEl = document.getElementById('metric-guides-num');
+    const patternsEl = document.getElementById('metric-patterns-num');
+    const followersEl = document.getElementById('metric-followers-num');
 
-    const followers = profile?.followers_count;
-    if (followersEl && followers !== null && followers !== undefined) {
-      const formattedFollowers = formatMetricNumber(followers);
-      animateMetricNumber(followersEl, followers, formattedFollowers);
+    const duration = 1200; // Exact same smooth duration for all 3 counters
+
+    // 1. Guides count (total reels / guides)
+    const guides = totalPosts || profile?.total_posts_count || 40;
+    if (guidesEl) {
+      animateMetricNumber(guidesEl, guides, `${guides}+`, duration);
     }
 
-    const guides = totalPosts || profile?.total_posts_count;
-    if (guidesEl && guides) {
-      const formattedGuides = `${guides}+`;
-      animateMetricNumber(guidesEl, guides, formattedGuides);
+    // 2. Production patterns count (30+ patterns)
+    if (patternsEl) {
+      animateMetricNumber(patternsEl, 30, '30+', duration);
+    }
+
+    // 3. Followers count (active dev community)
+    const followers = profile?.followers_count || 68;
+    if (followersEl) {
+      const formattedFollowers = formatMetricNumber(followers);
+      animateMetricNumber(followersEl, followers, formattedFollowers, duration);
     }
   }
 
