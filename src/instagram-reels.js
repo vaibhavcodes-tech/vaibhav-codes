@@ -72,12 +72,20 @@ export function initInstagramReels({ showToast, triggerConfetti }) {
   function cleanHookText(str) {
     if (!str) return '';
     return str
+      .replace(/ðŸ“Š/g, '📊')
+      .replace(/ðŸ’¥/g, '💥')
+      .replace(/ðŸ’¡/g, '💡')
+      .replace(/ðŸ¤”/g, '🤔')
+      .replace(/ðŸ”¥/g, '🔥')
+      .replace(/ðŸ‘‡/g, '👇')
       .replace(/ðŸ˜±/g, '😱')
       .replace(/âŒ/g, '❌')
       .replace(/âœ\u0085/g, '✅')
+      .replace(/âœ”/g, '✔')
       .replace(/â†“/g, '👇')
       .replace(/ðŸš€/g, '🚀')
       .replace(/d\?\?±/g, '😱')
+      .replace(/[ðâ][\x80-\xBF]{1,3}/g, '')
       .trim();
   }
 
@@ -210,19 +218,19 @@ export function initInstagramReels({ showToast, triggerConfetti }) {
     const pageAvatar = document.querySelector('.creator-avatar-img');
     if (!pageAvatar) return;
 
-    // Reliable local avatar path (never depends on sleeping Render backend)
-    const localAvatar = profile?.local_profile_pic || '/data/profile_pic.jpg';
+    // Use official vaibhav.codes brand logo
+    const localAvatar = '/vaibhav-logo.png';
     pageAvatar.src = localAvatar;
     pageAvatar.onerror = function () {
       this.onerror = null;
-      this.src = '/vaibhav-profile.jpg';
+      this.src = '/vaibhav-logo.png';
     };
   }
 
   // --------------------------------------------------------------------------
   // 1-HOUR CACHING LAYER
   // --------------------------------------------------------------------------
-  const CACHE_KEY_PREFIX = 'vaibhav_reels_cache_v2_';
+  const CACHE_KEY_PREFIX = 'vaibhav_reels_cache_v3_';
   const CACHE_TTL_MS = 60 * 60 * 1000; // 1 hour in milliseconds
 
   function getLocalCache() {
@@ -617,12 +625,7 @@ export function initInstagramReels({ showToast, triggerConfetti }) {
       modalTitle.textContent = hook.replace(/[\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/gu, '').trim();
     }
 
-    const avatarSrc =
-      currentProfileData?.local_profile_pic_full ||
-      currentProfileData?.local_profile_pic ||
-      currentProfileData?.profile_pic_url ||
-      '/data/profile_pic.jpg' ||
-      '/vaibhav-profile.jpg';
+    const avatarSrc = '/vaibhav-logo.png';
 
     const creatorName = currentProfileData?.full_name
       ? currentProfileData.full_name.split('|')[0].trim()
@@ -663,7 +666,7 @@ export function initInstagramReels({ showToast, triggerConfetti }) {
                 src="${avatarSrc}" 
                 alt="${escapeHtml(creatorName)}" 
                 class="reel-author-img" 
-                onerror="this.onerror=null; this.src='/data/profile_pic.jpg';"
+                onerror="this.onerror=null; this.src='/vaibhav-logo.png';"
               />
               <div class="reel-author-text">
                 <div class="author-name-row">
