@@ -17,15 +17,12 @@ export function initInstagramReels({ showToast, triggerConfetti }) {
   // State
   let allReels = [];
   let currentSort = 'recent';
-  let isExpanded = false;
   let isLiveBackend = false;
   let activeReelItem = null;
   let currentProfileData = null;
 
   // DOM Elements
   const gridEl = document.getElementById('reels-grid');
-  const toggleBtn = document.getElementById('toggle-reels-btn');
-  const toggleText = document.getElementById('toggle-reels-text');
   const handleEl = document.getElementById('reels-creator-handle');
   const syncPill = document.getElementById('reels-sync-indicator');
   const sortButtons = document.querySelectorAll('.btn-sort-pill');
@@ -106,6 +103,9 @@ export function initInstagramReels({ showToast, triggerConfetti }) {
         item.viralRank = idx + 1;
       });
     } else if (sortKey === 'oldest') {
+      arr.forEach((item) => {
+        delete item.viralRank;
+      });
       arr.sort((a, b) => {
         const aDate = a.timestamp_utc || a.date || '';
         const bDate = b.timestamp_utc || b.date || '';
@@ -113,6 +113,9 @@ export function initInstagramReels({ showToast, triggerConfetti }) {
       });
     } else {
       // recent (default)
+      arr.forEach((item) => {
+        delete item.viralRank;
+      });
       arr.sort((a, b) => {
         const aDate = a.timestamp_utc || a.date || '';
         const bDate = b.timestamp_utc || b.date || '';
@@ -318,8 +321,9 @@ export function initInstagramReels({ showToast, triggerConfetti }) {
       return;
     }
 
-    const displayCount = isExpanded ? allReels.length : 5;
-    const visibleReels = allReels.slice(0, displayCount);
+    // Always show top 5 reels for all sort buttons
+    const visibleReels = allReels.slice(0, 5);
+    const isViralMode = currentSort === 'most_viral' || currentSort === 'viral';
 
     const cardsHtml = visibleReels
       .map((item, index) => {
@@ -338,10 +342,10 @@ export function initInstagramReels({ showToast, triggerConfetti }) {
         const comments = Number(item.comments || 0);
         const views = Number(item.views || 0);
 
-        const rankBadge =
-          currentSort === 'most_viral' || item.viralRank
-            ? `<span class="reel-rank-pill">#${item.viralRank || index + 1} Viral</span>`
-            : '';
+        // Only show rank badge when in viral mode
+        const rankBadge = isViralMode
+          ? `<span class="reel-rank-pill">#${index + 1} Viral</span>`
+          : '';
 
         const viewsHtml =
           views > 0
@@ -448,22 +452,6 @@ export function initInstagramReels({ showToast, triggerConfetti }) {
         }
       });
     });
-
-    // Update Toggle Button Text & State
-    if (toggleBtn && toggleText) {
-      if (allReels.length <= 5) {
-        toggleBtn.style.display = 'none';
-      } else {
-        toggleBtn.style.display = 'inline-flex';
-        if (isExpanded) {
-          toggleText.textContent = `Show Less (Top 5)`;
-          toggleBtn.classList.add('expanded');
-        } else {
-          toggleText.textContent = `Show All Reels (${allReels.length})`;
-          toggleBtn.classList.remove('expanded');
-        }
-      }
-    }
   }
 
   // --------------------------------------------------------------------------
@@ -489,8 +477,10 @@ export function initInstagramReels({ showToast, triggerConfetti }) {
     const views = Number(item.views || 0);
     const engagement = likes + comments;
 
+    // Only display viral badge when in viral mode
+    const isViralMode = currentSort === 'most_viral' || currentSort === 'viral';
     if (modalBadge) {
-      modalBadge.textContent = item.viralRank
+      modalBadge.textContent = isViralMode && item.viralRank
         ? `TOP #${item.viralRank} VIRAL REEL • @${targetUser}`
         : `INSTAGRAM REEL • @${targetUser}`;
     }
@@ -647,21 +637,6 @@ export function initInstagramReels({ showToast, triggerConfetti }) {
       }
     });
   });
-
-  // Toggle Show All / Show Less
-  if (toggleBtn) {
-    toggleBtn.addEventListener('click', () => {
-      isExpanded = !isExpanded;
-      renderReels();
-
-      if (!isExpanded) {
-        const reelsSection = document.getElementById('reels');
-        if (reelsSection) {
-          reelsSection.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
-    });
-  }
 
   // Modal Close Events
   if (modalCloseBtn) {
