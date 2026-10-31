@@ -10,9 +10,9 @@
  */
 
 export function initInstagramReels({ showToast, triggerConfetti }) {
-  const API_BASE_URL = 
-    (import.meta.env && import.meta.env.  PI_URL) || 
-    window.INSTA_API_URL || 
+  const API_BASE_URL =
+    (import.meta.env && import.meta.env.VITE_API_URL) ||
+    window.INSTA_API_URL ||
     'https://vaibhav-codes-instagram-api.onrender.com';
   const urlParams = new URLSearchParams(window.location.search);
   const targetUser = urlParams.get('user') || 'vaibhav.codes';
@@ -303,6 +303,11 @@ export function initInstagramReels({ showToast, triggerConfetti }) {
 
       if (res.ok) {
         const json = await res.json();
+        if (json?.status === 'syncing') {
+          console.log('[Reels] Server is syncing fresh data from Instagram. Scheduling silent refresh in 8s...');
+          setTimeout(() => fetchReels({ forceRefresh: true }), 8000);
+        }
+
         if (json && Array.isArray(json.data) && json.data.length > 0) {
           isLiveBackend = true;
           allReels = json.data;
