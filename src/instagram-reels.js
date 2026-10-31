@@ -11,7 +11,7 @@
 
 export function initInstagramReels({ showToast, triggerConfetti }) {
   const API_BASE_URL = 
-    (import.meta.env && import.meta.env.VITE_API_URL) || 
+    (import.meta.env && import.meta.env.  PI_URL) || 
     window.INSTA_API_URL || 
     'https://vaibhav-codes-instagram-api.onrender.com';
   const urlParams = new URLSearchParams(window.location.search);
@@ -67,6 +67,18 @@ export function initInstagramReels({ showToast, triggerConfetti }) {
     } catch {
       return dateStr;
     }
+  }
+
+  function cleanHookText(str) {
+    if (!str) return '';
+    return str
+      .replace(/ðŸ˜±/g, '😱')
+      .replace(/âŒ/g, '❌')
+      .replace(/âœ\u0085/g, '✅')
+      .replace(/â†“/g, '👇')
+      .replace(/ðŸš€/g, '🚀')
+      .replace(/d\?\?±/g, '😱')
+      .trim();
   }
 
   function escapeHtml(str) {
@@ -186,25 +198,22 @@ export function initInstagramReels({ showToast, triggerConfetti }) {
   }
 
   function updatePageAvatar(profile) {
-    if (!profile) return;
-    const avatar =
-      profile.local_profile_pic_full ||
-      profile.local_profile_pic ||
-      profile.profile_pic_url ||
-      '/data/profile_pic.jpg';
+    const pageAvatar = document.querySelector('.creator-avatar-img');
+    if (!pageAvatar) return;
 
-    if (avatar) {
-      const pageAvatar = document.querySelector('.creator-avatar-img');
-      if (pageAvatar) {
-        pageAvatar.src = avatar;
-      }
-    }
+    // Reliable local avatar path (never depends on sleeping Render backend)
+    const localAvatar = profile?.local_profile_pic || '/data/profile_pic.jpg';
+    pageAvatar.src = localAvatar;
+    pageAvatar.onerror = function () {
+      this.onerror = null;
+      this.src = '/vaibhav-profile.jpg';
+    };
   }
 
   // --------------------------------------------------------------------------
   // 1-HOUR CACHING LAYER
   // --------------------------------------------------------------------------
-  const CACHE_KEY_PREFIX = 'vaibhav_reels_cache_';
+  const CACHE_KEY_PREFIX = 'vaibhav_reels_cache_v2_';
   const CACHE_TTL_MS = 60 * 60 * 1000; // 1 hour in milliseconds
 
   function getLocalCache() {
@@ -426,15 +435,18 @@ export function initInstagramReels({ showToast, triggerConfetti }) {
 
     const cardsHtml = visibleReels
       .map((item, index) => {
+        const localCover = item.shortcode ? `/data/covers/${item.shortcode}.jpg` : null;
         const coverSrc =
+          localCover ||
           item.effective_cover_url ||
           item.local_cover_url ||
           item.cover_image_url ||
           '/vaibhav-profile.jpg';
 
-        const hook =
+        const rawHook =
           item.opening_hook ||
           (item.caption ? item.caption.split('\n')[0].slice(0, 75) : 'System Design Breakdown');
+        const hook = cleanHookText(rawHook);
 
         const postUrl = item.post_url || `https://www.instagram.com/p/${item.shortcode}/`;
         const likes = Number(item.likes || 0);
@@ -467,7 +479,7 @@ export function initInstagramReels({ showToast, triggerConfetti }) {
               alt="${escapeHtml(hook)}" 
               class="reel-thumb-img" 
               loading="lazy" 
-              onerror="this.onerror=null; this.src='/vaibhav-profile.jpg';"
+              onerror="if (this.src.indexOf('/data/covers/') === -1 && '${item.shortcode}') { this.src = '/data/covers/${item.shortcode}.jpg'; } else if (this.src !== '${item.cover_image_url}' && '${item.cover_image_url}') { this.src = '${item.cover_image_url}'; } else { this.onerror=null; this.src='/vaibhav-profile.jpg'; }"
             />
             
             <div class="reel-top-badges">
@@ -564,7 +576,9 @@ export function initInstagramReels({ showToast, triggerConfetti }) {
       item.opening_hook ||
       (item.caption ? item.caption.split('\n')[0].slice(0, 80) : 'System Design Breakdown');
 
+    const localCover = item.shortcode ? `/data/covers/${item.shortcode}.jpg` : null;
     const coverSrc =
+      localCover ||
       item.effective_cover_url ||
       item.local_cover_url ||
       item.cover_image_url ||
@@ -616,7 +630,7 @@ export function initInstagramReels({ showToast, triggerConfetti }) {
                 src="${coverSrc}" 
                 alt="Reel Cover" 
                 class="reel-modal-cover-preview" 
-                onerror="this.onerror=null; this.src='/vaibhav-profile.jpg';"
+                onerror="if (this.src.indexOf('/data/covers/') === -1 && '${item.shortcode}') { this.src = '/data/covers/${item.shortcode}.jpg'; } else if (this.src !== '${item.cover_image_url}' && '${item.cover_image_url}') { this.src = '${item.cover_image_url}'; } else { this.onerror=null; this.src='/vaibhav-profile.jpg'; }"
               />
               <!-- Modern Instagram Reel icon at bottom corner -->
               <div class="reel-play-btn-bottom" aria-hidden="true" title="Instagram Reel">
