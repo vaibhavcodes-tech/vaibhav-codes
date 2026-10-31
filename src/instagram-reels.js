@@ -529,10 +529,10 @@ export function initInstagramReels({ showToast, triggerConfetti }) {
                 class="reel-modal-cover-preview" 
                 onerror="this.onerror=null; this.src='/vaibhav-profile.jpg';"
               />
-              <!-- Small modern play icon at bottom side -->
-              <div class="reel-play-btn-bottom" aria-hidden="true">
-                <svg class="play-svg" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/>
+              <!-- Modern Instagram Reel icon at bottom corner -->
+              <div class="reel-play-btn-bottom" aria-hidden="true" title="Instagram Reel">
+                <svg class="reel-corner-svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4zm-6.5 12V9.5l5 3.25-5 3.25z"/>
                 </svg>
               </div>
             </a>
