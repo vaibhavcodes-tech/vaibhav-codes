@@ -1066,7 +1066,6 @@ button {
   height: 56px;
   flex-shrink: 0;
   border-radius: 50%;
-  overflow: hidden;
   background-color: #222226;
 }
 
@@ -1075,18 +1074,21 @@ button {
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  display: block;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
 }
 
 .creator-status-indicator {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: 1px;
+  right: 1px;
   width: 14px;
   height: 14px;
   background-color: var(--accent-green);
   border: 2.5px solid #161618;
   border-radius: 50%;
+  z-index: 2;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4), 0 0 8px rgba(52, 199, 89, 0.45);
 }
 
 .creator-badge-info {
