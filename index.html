@@ -315,44 +315,28 @@
               </div>
             </div>
 
-            <!-- Sorting Buttons Group (Apple Pill Segmented Control) + Sync Latest Button -->
+            <!-- Sorting Buttons Group (Apple Pill Segmented Control) -->
             <div class="reels-header-right">
-              <div class="reels-controls-row">
-                <div class="reels-sort-group" role="group" aria-label="Sort Instagram reels">
-                  <button type="button" class="btn-sort-pill active" data-sort="recent" aria-pressed="true">
-                    <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <circle cx="12" cy="12" r="10"></circle>
-                      <polyline points="12 6 12 12 16 14"></polyline>
-                    </svg>
-                    <span>Recent</span>
-                  </button>
-                  <button type="button" class="btn-sort-pill" data-sort="most_viral" aria-pressed="false">
-                    <svg class="svg-icon fire-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path>
-                    </svg>
-                    <span>Most Viral</span>
-                  </button>
-                  <button type="button" class="btn-sort-pill" data-sort="oldest" aria-pressed="false">
-                    <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M3 4v5h5"></path>
-                      <path d="M3.05 13A9 9 0 1 0 6 5.3L3 9"></path>
-                    </svg>
-                    <span>Oldest</span>
-                  </button>
-                </div>
-
-                <!-- Sync Latest Button (1-hour cache bypass & live fetch) -->
-                <button 
-                  type="button" 
-                  id="reels-refresh-btn" 
-                  class="btn-sync-reels" 
-                  title="Cached for 1 hour. Click to fetch latest reels immediately."
-                  aria-label="Sync latest reels"
-                >
-                  <svg class="svg-icon sync-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
+              <div class="reels-sort-group" role="group" aria-label="Sort Instagram reels">
+                <button type="button" class="btn-sort-pill active" data-sort="recent" aria-pressed="true">
+                  <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
                   </svg>
-                  <span id="reels-refresh-btn-text">Sync Latest</span>
+                  <span>Recent</span>
+                </button>
+                <button type="button" class="btn-sort-pill" data-sort="most_viral" aria-pressed="false">
+                  <svg class="svg-icon fire-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path>
+                  </svg>
+                  <span>Most Viral</span>
+                </button>
+                <button type="button" class="btn-sort-pill" data-sort="oldest" aria-pressed="false">
+                  <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 4v5h5"></path>
+                    <path d="M3.05 13A9 9 0 1 0 6 5.3L3 9"></path>
+                  </svg>
+                  <span>Oldest</span>
                 </button>
               </div>
             </div>

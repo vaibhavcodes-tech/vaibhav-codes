@@ -756,38 +756,7 @@ export function initInstagramReels({ showToast, triggerConfetti }) {
     }
   });
 
-  // Live Sync / Refresh Button (1-hour cache bypass)
-  const refreshBtn = document.getElementById('reels-refresh-btn');
-  const refreshText = document.getElementById('reels-refresh-btn-text');
-
-  if (refreshBtn) {
-    refreshBtn.addEventListener('click', async (e) => {
-      e.preventDefault();
-      if (refreshBtn.disabled) return;
-
-      refreshBtn.disabled = true;
-      refreshBtn.classList.add('is-syncing');
-      if (refreshText) refreshText.textContent = 'Syncing...';
-
-      try {
-        await fetchReels({ forceRefresh: true });
-
-        if (refreshText) refreshText.textContent = 'Synced!';
-        setTimeout(() => {
-          if (refreshText) refreshText.textContent = 'Sync Latest';
-          refreshBtn.disabled = false;
-          refreshBtn.classList.remove('is-syncing');
-        }, 1800);
-      } catch (err) {
-        if (refreshText) refreshText.textContent = 'Sync Latest';
-        refreshBtn.disabled = false;
-        refreshBtn.classList.remove('is-syncing');
-        if (showToast) showToast('Could not reach server. Using cached reels.');
-      }
-    });
-  }
-
-  // Kick off initial load
+  // Kick off initial load (served from 1-hour cache or fetched fresh)
   fetchReels();
 }
 
