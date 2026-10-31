@@ -10,7 +10,10 @@
  */
 
 export function initInstagramReels({ showToast, triggerConfetti }) {
-  const API_BASE_URL = (import.meta.env && import.meta.env.VITE_API_URL) || window.INSTA_API_URL || 'http://localhost:8000';
+  const API_BASE_URL = 
+    (import.meta.env && import.meta.env.VITE_API_URL) || 
+    window.INSTA_API_URL || 
+    'https://vaibhav-codes-instagram-api.onrender.com';
   const urlParams = new URLSearchParams(window.location.search);
   const targetUser = urlParams.get('user') || 'vaibhav.codes';
 
