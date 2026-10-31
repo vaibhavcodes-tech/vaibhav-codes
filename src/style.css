@@ -520,7 +520,6 @@ button {
    ========================================================================== */
 .focus-section {
   padding: 80px 0 100px;
-  border-top: 1px solid var(--border-light);
 }
 
 .focus-grid {
@@ -656,7 +655,6 @@ button {
    ========================================================================== */
 .projects-section {
   padding: 80px 0 100px;
-  border-top: 1px solid var(--border-light);
 }
 
 .projects-header-row {
@@ -943,7 +941,6 @@ button {
    ========================================================================== */
 .skills-section {
   padding: 80px 0 100px;
-  border-top: 1px solid var(--border-light);
 }
 
 .skills-grid {
@@ -1496,4 +1493,853 @@ button {
   .track-line {
     display: none;
   }
+}
+
+/* ==========================================================================
+   INSTAGRAM REELS SECTION & MODAL (APPLE / NIRAV GOHEL STYLE)
+   ========================================================================== */
+
+.reels-section {
+  padding: 80px 0;
+  background-color: var(--bg-page);
+}
+
+.reels-header-wrapper {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+
+.reels-header-left {
+  max-width: 620px;
+}
+
+.reels-subheading-row {
+  margin-top: 12px;
+}
+
+.reels-subheading {
+  font-size: 1.02rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.reels-badges-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.handle-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--bg-card-subtle);
+  border: 1px solid var(--border-light);
+  padding: 5px 12px;
+  border-radius: var(--radius-capsule);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  transition: var(--transition-fast);
+}
+
+.handle-pill:hover {
+  background-color: #ebebef;
+  border-color: #d1d1d6;
+  color: var(--accent-blue);
+}
+
+.reels-sync-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.76rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background-color: #ffffff;
+  border: 1px solid var(--border-subtle);
+  padding: 4px 10px;
+  border-radius: var(--radius-capsule);
+}
+
+.sync-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #86868b;
+  display: inline-block;
+}
+
+.sync-dot.live {
+  background-color: var(--accent-green);
+  box-shadow: 0 0 8px rgba(52, 199, 89, 0.6);
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+.reels-sync-pill.live-active {
+  border-color: rgba(52, 199, 89, 0.35);
+  background-color: rgba(52, 199, 89, 0.06);
+  color: #1b8a36;
+}
+
+@keyframes pulseDot {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.8; }
+}
+
+/* Apple Segmented Pill Sort Control */
+.reels-sort-group {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--bg-card-subtle);
+  padding: 4px;
+  border-radius: var(--radius-capsule);
+  border: 1px solid var(--border-light);
+  gap: 2px;
+}
+
+.btn-sort-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  padding: 7px 16px;
+  border-radius: var(--radius-capsule);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-sort-pill:hover:not(.active) {
+  color: var(--text-dark);
+}
+
+.btn-sort-pill.active {
+  background-color: #ffffff;
+  color: var(--text-dark);
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.btn-sort-pill .fire-icon {
+  color: #ff3b30;
+}
+
+/* ==========================================================================
+   REELS GRID LAYOUT
+   ========================================================================== */
+.reels-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+  width: 100%;
+}
+
+@media (max-width: 1100px) {
+  .reels-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .reels-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .reels-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Loading Skeletons */
+.reels-loading-skeleton {
+  display: contents;
+}
+
+.reel-card-skeleton {
+  background-color: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: 18px;
+  overflow: hidden;
+  height: 380px;
+  display: flex;
+  flex-direction: column;
+}
+
+.skeleton-thumb {
+  flex: 1;
+  background: linear-gradient(90deg, #f0f0f2 25%, #e6e6e8 50%, #f0f0f2 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.skeleton-meta {
+  padding: 14px;
+}
+
+.skeleton-line {
+  height: 12px;
+  border-radius: 6px;
+  background: #f0f0f2;
+  margin-bottom: 8px;
+}
+
+.skeleton-line.line-title {
+  width: 85%;
+}
+
+.skeleton-line.line-sub {
+  width: 50%;
+  margin-bottom: 0;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ==========================================================================
+   REEL CARD COMPONENT
+   ========================================================================== */
+.reel-card {
+  background-color: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.28s ease,
+              border-color 0.28s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.reel-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+  border-color: #d1d1d6;
+}
+
+/* Cover Image Box */
+.reel-cover-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background-color: #1a1b20;
+  overflow: hidden;
+}
+
+.reel-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: top center;
+}
+
+.reel-card:hover .reel-thumb-img {
+  transform: scale(1.06);
+}
+
+/* Top Floating Badges */
+.reel-top-badges {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.reel-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 3px 8px;
+  border-radius: var(--radius-capsule);
+}
+
+.reel-film-icon {
+  width: 12px;
+  height: 12px;
+}
+
+.reel-rank-pill {
+  display: inline-flex;
+  align-items: center;
+  background: #ff3b30;
+  color: #ffffff;
+  font-size: 0.66rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: var(--radius-capsule);
+  box-shadow: 0 2px 8px rgba(255, 59, 48, 0.45);
+}
+
+/* ==========================================================================
+   HOVER OVERLAY WITH LIKE EFFECT & DIRECT ARROW
+   ========================================================================== */
+.reel-hover-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.15) 35%, rgba(0,0,0,0.85) 100%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 12px;
+  z-index: 2;
+}
+
+.reel-card:hover .reel-hover-overlay {
+  opacity: 1;
+}
+
+/* Direct Arrow Link to Instagram */
+.reel-direct-arrow-btn {
+  align-self: flex-end;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.95);
+  color: var(--text-dark);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  z-index: 4;
+}
+
+.reel-direct-arrow-btn:hover {
+  transform: scale(1.15) rotate(6deg);
+  background-color: var(--accent-blue);
+  color: #ffffff;
+}
+
+.reel-hover-center-prompt {
+  align-self: center;
+  margin: auto 0;
+  pointer-events: none;
+}
+
+.tap-label {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: var(--radius-capsule);
+  letter-spacing: 0.02em;
+}
+
+/* Bottom Stats Strip & Bouncy Heart Like Effect */
+.reel-hover-stats-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  padding-top: 6px;
+}
+
+.hover-stat-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #ffffff;
+  font-size: 0.76rem;
+  font-weight: 600;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.heart-svg {
+  color: #ff3b30;
+  transition: transform 0.2s ease;
+}
+
+@keyframes heartBounce {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.4); }
+  65% { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+.reel-card:hover .like-item .heart-svg {
+  animation: heartBounce 0.45s ease-out;
+}
+
+/* Bottom Card Details */
+.reel-caption-meta {
+  padding: 12px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.reel-hook-title {
+  font-size: 0.84rem;
+  font-weight: 600;
+  line-height: 1.38;
+  color: var(--text-dark);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 2.3em;
+}
+
+.reel-date-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 8px;
+  margin-top: 4px;
+}
+
+.reel-view-link {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--accent-blue);
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  transition: gap 0.15s ease;
+}
+
+.reel-card:hover .reel-view-link {
+  gap: 4px;
+}
+
+/* Action Footer: Show More Button */
+.reels-action-footer {
+  margin-top: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+#toggle-reels-btn .chevron-icon {
+  transition: transform 0.25s ease;
+}
+
+#toggle-reels-btn.expanded .chevron-icon {
+  transform: rotate(180deg);
+}
+
+/* Empty / Fallback State */
+.reels-empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 48px 24px;
+  background-color: var(--bg-card-subtle);
+  border-radius: var(--radius-card);
+  border: 1px dashed var(--border-light);
+}
+
+.empty-icon {
+  width: 44px;
+  height: 44px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.reels-empty-state h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.reels-empty-state p {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   REEL DETAIL MODAL (APPLE DIALOG)
+   ========================================================================== */
+.reel-modal-dialog {
+  max-width: 760px !important;
+  width: 92% !important;
+  max-height: min(85vh, 600px);
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.22);
+}
+
+.reel-modal-dialog .modal-header {
+  padding: 16px 24px 14px 24px;
+  flex-shrink: 0;
+}
+
+.reel-modal-dialog .modal-heading {
+  font-size: 1.18rem;
+  line-height: 1.35;
+}
+
+.reel-modal-body {
+  padding: 16px 24px 20px 24px !important;
+  overflow-y: auto;
+  flex: 1;
+  -webkit-overflow-scrolling: touch;
+}
+
+.reel-modal-container {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+@media (max-width: 768px) {
+  .reel-modal-dialog {
+    max-height: 92vh;
+    border-radius: 18px;
+  }
+  .reel-modal-dialog .modal-header {
+    padding: 14px 16px 10px 16px;
+  }
+  .reel-modal-body {
+    padding: 12px 16px 18px 16px !important;
+  }
+  .reel-modal-container {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .reel-modal-poster-box {
+    max-height: 250px !important;
+    aspect-ratio: auto !important;
+    height: 230px !important;
+  }
+  .reel-caption-simple-box {
+    max-height: 180px !important;
+  }
+  .reel-modal-footer-row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+  }
+  .btn-modal-ig {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
+
+.reel-modal-media-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.reel-modal-poster-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  max-height: 380px;
+  border-radius: 14px;
+  overflow: hidden;
+  background-color: #0b0c0e;
+  border: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.reel-modal-cover-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.reel-modal-play-watermark {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.12);
+  transition: background 0.2s ease;
+}
+
+.reel-modal-play-watermark:hover {
+  background: rgba(0, 0, 0, 0.22);
+}
+
+.reel-play-circle {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease;
+}
+
+.reel-play-circle:hover {
+  transform: scale(1.1);
+  background: #ffffff;
+  color: var(--accent-blue);
+}
+
+.play-svg {
+  width: 18px;
+  height: 18px;
+  margin-left: 2px;
+}
+
+/* Modal Right Details Column */
+.reel-modal-details-col {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100%;
+}
+
+.reel-author-strip {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-light);
+  flex-shrink: 0;
+}
+
+.reel-author-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--border-light);
+}
+
+.author-name-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.author-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+}
+
+.author-handle {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+}
+
+.verified-dot {
+  width: 15px;
+  height: 15px;
+  background-color: var(--accent-blue);
+  color: #ffffff;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 800;
+}
+
+.author-date-row {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.author-date-row code {
+  background: var(--bg-card-subtle);
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+}
+
+/* Minimal Clean Caption (No Background, Pure Minimalist Text) */
+.reel-caption-simple-box {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 12px 6px 12px 0;
+  font-size: 0.92rem;
+  line-height: 1.62;
+  color: var(--text-body);
+  flex: 1;
+  overflow-y: auto;
+  max-height: 250px;
+}
+
+.reel-caption-simple-box::-webkit-scrollbar {
+  width: 4px;
+}
+
+.reel-caption-simple-box::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.reel-caption-simple-box::-webkit-scrollbar-thumb {
+  background: #e2e2e7;
+  border-radius: 4px;
+}
+
+.reel-caption-simple-box .caption-formatted {
+  word-break: break-word;
+  padding-bottom: 8px;
+}
+
+.caption-tag, .caption-mention {
+  color: var(--accent-blue);
+  font-weight: 600;
+}
+
+.caption-empty {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Dedicated Action & Stats Footer Row at bottom of details column */
+.reel-modal-footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-light);
+  flex-shrink: 0;
+}
+
+.poster-stats-overlay {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+}
+
+.poster-stat-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+.poster-stat-item .svg-icon-heart {
+  width: 14px;
+  height: 14px;
+  color: #ff3b30;
+}
+
+.poster-stat-item .svg-icon-comment {
+  width: 14px;
+  height: 14px;
+  color: var(--text-muted);
+}
+
+.stat-sep {
+  color: var(--border-light);
+  font-size: 0.8rem;
+}
+
+/* Sleek Dark Capsule Watch on Instagram Link Button */
+.btn-modal-ig {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: auto;
+  white-space: nowrap;
+  padding: 9px 18px;
+  background-color: #1d1d1f;
+  color: #ffffff;
+  border-radius: var(--radius-capsule);
+  font-size: 0.84rem;
+  font-weight: 600;
+  border: 1px solid #1d1d1f;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.btn-modal-ig:hover {
+  background-color: #000000;
+  border-color: #000000;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn-modal-ig .svg-icon {
+  width: 15px;
+  height: 15px;
+}
+
+.btn-modal-ig .ig-arrow {
+  width: 13px;
+  height: 13px;
+  margin-left: 2px;
+  transition: transform 0.2s ease;
+}
+
+.btn-modal-ig:hover .ig-arrow {
+  transform: translate(2px, -2px);
 }

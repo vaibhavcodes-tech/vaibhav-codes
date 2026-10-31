@@ -29,13 +29,13 @@
     <!-- Critical Anti-Flicker & Modal Suppression -->
     <style>
       .modal-overlay,
-      #breakdown-modal {
+      #reel-modal {
         display: none !important;
         opacity: 0 !important;
         visibility: hidden !important;
       }
       .modal-overlay.open,
-      #breakdown-modal.open {
+      #reel-modal.open {
         display: flex !important;
         opacity: 1 !important;
         visibility: visible !important;
@@ -44,7 +44,7 @@
   </head>
   <body>
     <!-- ==============================================
-         SITE NAVIGATION (Matching Nirav Gohel ng. Header)
+         SITE NAVIGATION (Matching  Gohel ng. Header)
          Clean border, monogram mark, centered links, dark capsule button
          ============================================== -->
     <header class="site-header">
@@ -59,7 +59,7 @@
         <nav class="nav-menu" aria-label="Main Navigation">
           <a href="#about" class="nav-link">About</a>
           <a href="#focus" class="nav-link">Focus</a>
-          <a href="#projects" class="nav-link">Projects</a>
+          <a href="#reels" class="nav-link">Reels</a>
           <a href="#skills" class="nav-link">Skills</a>
           <a href="#contact" class="nav-link">Contact</a>
         </nav>
@@ -89,7 +89,7 @@
       <div id="mobile-menu" class="mobile-menu">
         <a href="#about" class="mobile-link">About</a>
         <a href="#focus" class="mobile-link">Focus</a>
-        <a href="#projects" class="mobile-link">Projects</a>
+        <a href="#reels" class="mobile-link">Reels</a>
         <a href="#skills" class="mobile-link">Skills</a>
         <a href="#contact" class="mobile-link">Contact</a>
         <a href="https://www.instagram.com/vaibhav.codes" target="_blank" rel="noopener noreferrer" class="btn-capsule-dark mobile-btn">
@@ -100,13 +100,13 @@
 
     <main>
       <!-- ==============================================
-           HERO SECTION (Matching Nirav Gohel Hero 1:1)
+           HERO SECTION (Matching  Gohel Hero 1:1)
            Eyebrow name & title, huge 2-tone headline, clean subtitle,
            Apple blue pill button + outlined secondary pill button
            ============================================== -->
       <section id="hero" class="hero-section">
         <div class="page-container hero-container text-center">
-          <!-- Small Eyebrow (Nirav style) -->
+          <!-- Small Eyebrow ( style) -->
           <div class="hero-eyebrow">
             <span class="hero-name">Vaibhav</span>
             <span class="hero-role">System Design &amp; Backend Engineer</span>
@@ -134,26 +134,26 @@
               </svg>
               <span>Follow on Instagram</span>
             </a>
-            <a href="#projects" class="btn-pill-secondary">
-              <span>View selected work</span>
+            <a href="#reels" class="btn-pill-secondary">
+              <span>Watch recent reels</span>
             </a>
           </div>
 
           <!-- Availability Tag -->
           <div class="hero-availability">
-            <span>Available for backend architecture &amp; system design consulting &bull; Daily at 7:00 PM IST &bull; @vaibhav.codes</span>
+            <span>Available for backend architecture &amp; system design consulting &bull; Daily at 7:00 PM / 7:00 AM IST &bull; @vaibhav.codes</span>
           </div>
         </div>
       </section>
 
       <!-- ==============================================
-           METRICS BANNER (Matching Nirav 4-column container)
+           METRICS BANNER (Matching  4-column container)
            ============================================== -->
       <section class="metrics-section">
         <div class="page-container">
           <div class="metrics-grid">
             <div class="metric-col">
-              <div class="metric-num">36+</div>
+              <div class="metric-num" id="metric-guides-num">38+</div>
               <div class="metric-desc">Engineering guides / System design &amp; backend breakdowns on Instagram</div>
             </div>
             <div class="metric-col">
@@ -161,8 +161,8 @@
               <div class="metric-desc">Production patterns covered / Rate limiting, Idempotency, Auth &amp; Caching</div>
             </div>
             <div class="metric-col">
-              <div class="metric-num">65+</div>
-              <div class="metric-desc">Active dev community / Daily backend learning on Instagram</div>
+              <div class="metric-num" id="metric-followers-num">67+</div>
+              <div class="metric-desc" id="metric-followers-desc">Active dev community / Daily backend learning on Instagram</div>
             </div>
             <div class="metric-col last-col">
               <div class="metric-num">Idea <span class="num-italic">to</span> scale</div>
@@ -173,7 +173,7 @@
       </section>
 
       <!-- ==============================================
-           ABOUT ME SECTION (Matching Nirav 2-Column Layout)
+           ABOUT ME SECTION (Matching  2-Column Layout)
            Left: Eyebrow + 2-tone huge title ("Good engineering. Lasting value.")
            Right: Narrative typography + key philosophy tags
            ============================================== -->
@@ -207,7 +207,7 @@
       </section>
 
       <!-- ==============================================
-           CURRENT FOCUS / EXPERIENCE SECTION (Matching Nirav)
+           CURRENT FOCUS / EXPERIENCE SECTION (Matching )
            Left: Role timeline & status
            Right: Title, 2 Stat cards in #F5F5F7, bullet points, tags
            ============================================== -->
@@ -227,7 +227,7 @@
             <h2 class="focus-title">Senior Backend &amp; Distributed Systems Creator</h2>
             <div class="focus-org">
               <a href="https://instagram.com/vaibhav.codes" target="_blank" rel="noopener noreferrer" class="org-link">
-                @vaibhav.codes &bull; Daily @ 7PM IST &bull; 36 Reels
+                @vaibhav.codes  
               </a>
             </div>
             <p class="focus-description">
@@ -286,155 +286,94 @@
       </section>
 
       <!-- ==============================================
-           SELECTED WORK / PROJECTS (Matching Nirav 1:1)
-           Title: "Selected work." with "Explore Instagram Feed ↗"
-           2 Large Cards with mock preview panels, tags, bullets
+           REELS SECTION (Dynamic Instagram Breakdowns & Viral Reels)
            ============================================== -->
-      <section id="projects" class="projects-section">
+      <section id="reels" class="reels-section">
         <div class="page-container">
-          <div class="projects-header-row">
-            <h2 class="projects-heading">Selected work.</h2>
+          <!-- Section Header Row -->
+          <div class="reels-header-wrapper">
+            <div class="reels-header-left">
+              <span class="section-label">INSTAGRAM</span>
+              <h2 class="section-two-tone-title">
+                <span class="line-dark">Recent reels.</span>
+                <span class="line-muted">High-yield system design.</span>
+              </h2>
+              <div class="reels-subheading-row">
+                <p class="reels-subheading">
+                  Real code, fault-tolerant patterns, and distributed systems explained daily on
+                </p>
+                <div class="reels-badges-row">
+                  <a href="https://www.instagram.com/vaibhav.codes" target="_blank" rel="noopener noreferrer" class="handle-pill">
+                    <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                    <span id="reels-creator-handle">@vaibhav.codes</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sorting Buttons Group (Apple Pill Segmented Control) -->
+            <div class="reels-header-right">
+              <div class="reels-sort-group" role="group" aria-label="Sort Instagram reels">
+                <button type="button" class="btn-sort-pill active" data-sort="recent" aria-pressed="true">
+                  <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  <span>Recent</span>
+                </button>
+                <button type="button" class="btn-sort-pill" data-sort="most_viral" aria-pressed="false">
+                  <svg class="svg-icon fire-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path>
+                  </svg>
+                  <span>Most Viral</span>
+                </button>
+                <button type="button" class="btn-sort-pill" data-sort="oldest" aria-pressed="false">
+                  <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 4v5h5"></path>
+                    <path d="M3.05 13A9 9 0 1 0 6 5.3L3 9"></path>
+                  </svg>
+                  <span>Oldest</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dynamic Reels Container Grid (Shows 5 initially) -->
+          <div id="reels-grid" class="reels-grid" aria-live="polite">
+            <div class="reels-loading-skeleton">
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+            </div>
+          </div>
+
+          <!-- Show More / Show Less Action Row -->
+          <div class="reels-action-footer">
+            <button id="toggle-reels-btn" class="btn-pill-secondary" type="button">
+              <span id="toggle-reels-text">Show All Reels</span>
+              <svg class="svg-icon chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
             <a href="https://www.instagram.com/vaibhav.codes" target="_blank" rel="noopener noreferrer" class="link-with-arrow">
-              <span>Explore Instagram Feed</span>
+              <span>Explore @vaibhav.codes on Instagram</span>
               <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="7" y1="17" x2="17" y2="7"></line>
                 <polyline points="7 7 17 7 17 17"></polyline>
               </svg>
             </a>
           </div>
-
-          <div class="projects-cards-grid">
-            <!-- Project Card 1: Transactional Outbox -->
-            <article class="project-card">
-              <!-- Mock UI Visual Panel -->
-              <div class="project-visual-panel">
-                <div class="panel-header-badge">
-                  <span class="badge-dot"></span>
-                  EVENT-DRIVEN INFRASTRUCTURE
-                </div>
-                <div class="panel-mock-window">
-                  <div class="mock-top-bar">
-                    <span class="mock-tag-live">Active Outbox Broker</span>
-                    <span class="mock-cluster">Cluster: us-east-1</span>
-                  </div>
-                  <div class="mock-metrics-row">
-                    <div class="mock-metric-cell">
-                      <span class="cell-label">STATUS</span>
-                      <span class="cell-val text-green">202 Accepted</span>
-                    </div>
-                    <div class="mock-metric-cell">
-                      <span class="cell-label">INGESTION</span>
-                      <span class="cell-val">4.2ms</span>
-                    </div>
-                    <div class="mock-metric-cell">
-                      <span class="cell-label">KAFKA DLQ</span>
-                      <span class="cell-val">0 Errors</span>
-                    </div>
-                    <div class="mock-metric-cell">
-                      <span class="cell-label">DEDUPLICATION</span>
-                      <span class="cell-val text-blue">100% Guaranteed</span>
-                    </div>
-                  </div>
-                  <div class="mock-code-strip">
-                    <code>INSERT INTO orders (id, total) VALUES ($1, $2);<br />INSERT INTO outbox_events (event_id, payload) VALUES ($3, $4);</code>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Project Content Details -->
-              <div class="project-content">
-                <div class="project-category-tag">EVENT-DRIVEN INFRASTRUCTURE</div>
-                <h3 class="project-title">HookRelay &bull; Transactional Outbox.</h3>
-                <div class="project-subtitle">Industrial Webhook Delivery &amp; Observability Engine</div>
-                <p class="project-summary">
-                  An industrial-grade transactional outbox architecture built to guarantee at-least-once event delivery under real-world network partitions and database failures. Features transactional outbox persistence, HMAC-SHA256 signatures, and automated exponential backoff.
-                </p>
-                <ul class="project-bullets">
-                  <li>Transactional outbox ingestion with atomic HTTP 202 Accepted response</li>
-                  <li>Cryptographic HMAC-SHA256 signing &amp; anti-replay verification</li>
-                  <li>Idempotency key deduplication with Redis distributed locking</li>
-                </ul>
-
-                <div class="project-card-footer">
-                  <button class="btn-card-action" data-demo="outbox">
-                    <span>Inspect System Breakdown</span>
-                    <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <line x1="5" y1="12" x2="19" y2="12"></line>
-                      <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </article>
-
-            <!-- Project Card 2: Ultra-Scale Redis Layer -->
-            <article class="project-card">
-              <!-- Mock UI Visual Panel -->
-              <div class="project-visual-panel dark-variant">
-                <div class="panel-header-badge">
-                  <span class="badge-dot green-dot"></span>
-                  HIGH-CONCURRENCY CACHING
-                </div>
-                <div class="panel-mock-window">
-                  <div class="mock-top-bar">
-                    <span class="mock-tag-live">Redis Cluster &bull; 100K RPS</span>
-                    <span class="mock-cluster">Bloom Filter: Armed</span>
-                  </div>
-                  <div class="mock-metrics-row">
-                    <div class="mock-metric-cell">
-                      <span class="cell-label">CACHE HIT RATIO</span>
-                      <span class="cell-val text-green">99.4%</span>
-                    </div>
-                    <div class="mock-metric-cell">
-                      <span class="cell-label">P99 LATENCY</span>
-                      <span class="cell-val">0.8ms</span>
-                    </div>
-                    <div class="mock-metric-cell">
-                      <span class="cell-label">STAMPEDE SHIELD</span>
-                      <span class="cell-val text-blue">Mutex Locked</span>
-                    </div>
-                    <div class="mock-metric-cell">
-                      <span class="cell-label">PENETRATION</span>
-                      <span class="cell-val text-purple">0 DB Leaks</span>
-                    </div>
-                  </div>
-                  <div class="mock-code-strip">
-                    <code>// Probabilistic Early Refresh (XFetch)<br />if (time() - delta * beta * log(rand()) &gt; expiry) refreshCacheAsync();</code>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Project Content Details -->
-              <div class="project-content">
-                <div class="project-category-tag">DATA ENGINEERING &amp; CACHING</div>
-                <h3 class="project-title">Ultra-Scale Redis Layer.</h3>
-                <div class="project-subtitle">Low-Latency Caching, Cache Stampede &amp; Penetration Defense</div>
-                <p class="project-summary">
-                  An enterprise-grade caching architecture designed for read-heavy microservices handling 100k+ RPS. Implements probabilistic early cache refresh (XFetch algorithm) combined with Bloom filter guards to prevent database thundering herd during traffic spikes.
-                </p>
-                <ul class="project-bullets">
-                  <li>Bloom filter guard rejecting 100% of non-existent entity lookups</li>
-                  <li>Distributed mutex-locked background refresh preventing DB stampede</li>
-                  <li>Multi-region read replica synchronization with automated failover</li>
-                </ul>
-
-                <div class="project-card-footer">
-                  <button class="btn-card-action" data-demo="caching">
-                    <span>Inspect System Breakdown</span>
-                    <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <line x1="5" y1="12" x2="19" y2="12"></line>
-                      <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </article>
-          </div>
         </div>
       </section>
 
       <!-- ==============================================
-           SKILLS SECTION (Matching Nirav 3x2 Grid 1:1)
+           SKILLS SECTION (Matching  3x2 Grid 1:1)
            Clean top border, clean titles, technology list,
            bottom domain track line
            ============================================== -->
@@ -495,7 +434,7 @@
             </div>
           </div>
 
-          <!-- Bottom Domain Track (Nirav's signature line) -->
+          <!-- Bottom Domain Track ('s signature line) -->
           <div class="domain-track-row">
             <span class="track-label">Interface</span>
             <div class="track-line"></div>
@@ -510,7 +449,7 @@
 
       <!-- ==============================================
            BOTTOM SECTION: ABOUT & CONTACT CARD
-           (Matching Nirav's Dark "Your next challenge" Card + User's Character Image!)
+           (Matching 's Dark "Your next challenge" Card + User's Character Image!)
            ============================================== -->
       <section id="contact" class="connect-section">
         <div class="page-container">
@@ -533,7 +472,7 @@
                   <span class="creator-handle">@vaibhav.codes</span>
                 </div>
                 <div class="creator-meta">
-                  Daily breakdowns at 7:00 PM IST &bull; Real Code, No Fluff
+                  Daily breakdowns at 7:00 PM IST / 7:00 AM &bull; Real Code, No Fluff
                 </div>
               </div>
             </div>
@@ -595,23 +534,23 @@
     </footer>
 
     <!-- ==============================================
-         BREAKDOWN MODAL (INTERACTIVE SYSTEM LAB)
+         REEL DETAIL MODAL (Instagram Reel Breakdown Viewer)
          ============================================== -->
-    <div id="breakdown-modal" class="modal-overlay" style="display: none;" aria-hidden="true">
-      <div class="modal-dialog">
+    <div id="reel-modal" class="modal-overlay" style="display: none;" aria-hidden="true">
+      <div class="modal-dialog reel-modal-dialog">
         <div class="modal-header">
           <div class="modal-header-info">
-            <span id="modal-eyebrow" class="modal-badge">ARCHITECTURE BREAKDOWN</span>
-            <h3 id="modal-title" class="modal-heading">Transactional Outbox Engine</h3>
+            <span class="modal-badge" id="reel-modal-badge">INSTAGRAM REEL &bull; BREAKDOWN</span>
+            <h3 id="reel-modal-title" class="modal-heading">System Design Breakdown</h3>
           </div>
-          <button id="modal-close-btn" class="modal-close" aria-label="Close modal">
+          <button id="reel-modal-close-btn" class="modal-close" aria-label="Close reel modal">
             <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <line x1="18" y1="6" x2="6" y2="18"></line>
               <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
           </button>
         </div>
-        <div class="modal-body" id="modal-body-content">
+        <div class="modal-body reel-modal-body" id="reel-modal-body-content">
           <!-- Populated dynamically via main.js -->
         </div>
       </div>
