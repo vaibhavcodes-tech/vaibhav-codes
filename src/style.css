@@ -2089,6 +2089,17 @@ button {
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.reel-modal-poster-box::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.12) 18%, transparent 35%);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .reel-modal-cover-preview {
@@ -2097,47 +2108,46 @@ button {
   object-fit: cover;
   object-position: top center;
   display: block;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.reel-modal-play-watermark {
+.reel-modal-poster-box:hover .reel-modal-cover-preview {
+  transform: scale(1.025);
+}
+
+/* Small, modern play icon badge at bottom right */
+.reel-play-btn-bottom {
   position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: rgba(0, 0, 0, 0.12);
-  transition: background 0.2s ease;
-}
-
-.reel-modal-play-watermark:hover {
-  background: rgba(0, 0, 0, 0.22);
-}
-
-.reel-play-circle {
-  width: 46px;
-  height: 46px;
+  bottom: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.95);
-  color: var(--text-dark);
+  background: rgba(18, 18, 20, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 2;
 }
 
-.reel-play-circle:hover {
-  transform: scale(1.1);
-  background: #ffffff;
-  color: var(--accent-blue);
+.reel-modal-poster-box:hover .reel-play-btn-bottom {
+  background: #0071e3;
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.12);
+  box-shadow: 0 4px 16px rgba(0, 113, 227, 0.48);
 }
 
-.play-svg {
-  width: 18px;
-  height: 18px;
+.reel-play-btn-bottom .play-svg {
+  width: 12px;
+  height: 12px;
   margin-left: 2px;
+  fill: #ffffff;
 }
 
 /* Modal Right Details Column */

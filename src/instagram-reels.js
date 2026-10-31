@@ -516,21 +516,26 @@ export function initInstagramReels({ showToast, triggerConfetti }) {
         <div class="reel-modal-container">
           <!-- Left Media Column: Clean Full Poster -->
           <div class="reel-modal-media-wrap">
-            <div class="reel-modal-poster-box">
+            <a 
+              href="${postUrl}" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="reel-modal-poster-box" 
+              title="Watch on Instagram"
+            >
               <img 
                 src="${coverSrc}" 
                 alt="Reel Cover" 
                 class="reel-modal-cover-preview" 
                 onerror="this.onerror=null; this.src='/vaibhav-profile.jpg';"
               />
-              <div class="reel-modal-play-watermark">
-                <a href="${postUrl}" target="_blank" rel="noopener noreferrer" class="reel-play-circle" title="Play on Instagram">
-                  <svg class="play-svg" viewBox="0 0 24 24" fill="currentColor">
-                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                  </svg>
-                </a>
+              <!-- Small modern play icon at bottom side -->
+              <div class="reel-play-btn-bottom" aria-hidden="true">
+                <svg class="play-svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/>
+                </svg>
               </div>
-            </div>
+            </a>
           </div>
 
           <!-- Right Details Column -->
