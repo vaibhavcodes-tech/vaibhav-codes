@@ -202,18 +202,92 @@ export function initInstagramReels({ showToast, triggerConfetti }) {
   }
 
   // --------------------------------------------------------------------------
-  // DATA FETCHING
+  // 1-HOUR CACHING LAYER
   // --------------------------------------------------------------------------
-  async function fetchReels() {
-    renderSkeleton();
+  const CACHE_KEY_PREFIX = 'vaibhav_reels_cache_';
+  const CACHE_TTL_MS = 60 * 60 * 1000; // 1 hour in milliseconds
 
-    // 1. Try local API server first
+  function getLocalCache() {
+    try {
+      const raw = localStorage.getItem(`${CACHE_KEY_PREFIX}${targetUser}`);
+      if (!raw) return null;
+      const parsed = JSON.parse(raw);
+      if (!parsed || !parsed.timestamp || !Array.isArray(parsed.data)) {
+        return null;
+      }
+      const age = Date.now() - parsed.timestamp;
+      const isFresh = age < CACHE_TTL_MS;
+      const minutesAgo = Math.max(0, Math.floor(age / 60000));
+      return {
+        ...parsed,
+        isFresh,
+        age,
+        minutesAgo
+      };
+    } catch (err) {
+      console.warn('[Reels] Cache read error:', err);
+      return null;
+    }
+  }
+
+  function setLocalCache(data, profile, totalCount, lastSynced, isLive) {
+    try {
+      const payload = {
+        timestamp: Date.now(),
+        data,
+        profile: profile || {},
+        totalCount: totalCount || data.length,
+        lastSynced: lastSynced || new Date().toISOString(),
+        isLive: !!isLive
+      };
+      localStorage.setItem(`${CACHE_KEY_PREFIX}${targetUser}`, JSON.stringify(payload));
+    } catch (err) {
+      console.warn('[Reels] Cache write error:', err);
+    }
+  }
+
+  function clearLocalCache() {
+    try {
+      localStorage.removeItem(`${CACHE_KEY_PREFIX}${targetUser}`);
+    } catch (err) {}
+  }
+
+  // --------------------------------------------------------------------------
+  // DATA FETCHING (1-Hour Cache + Live Sync + Fallback)
+  // --------------------------------------------------------------------------
+  async function fetchReels(options = {}) {
+    const { forceRefresh = false } = options;
+
+    // 1. Serve from 1-Hour Cache if valid and not force-refreshing
+    if (!forceRefresh) {
+      const cached = getLocalCache();
+      if (cached && cached.isFresh && cached.data.length > 0) {
+        console.log(`[Reels] Loaded instantly from 1-hour cache (${cached.minutesAgo}m old)`);
+        isLiveBackend = !!cached.isLive;
+        allReels = sortReelItems(cached.data, currentSort);
+        currentProfileData = cached.profile || {};
+        updateSyncIndicator(isLiveBackend, cached.lastSynced);
+        updateDynamicMetrics(cached.profile, cached.totalCount || allReels.length);
+        updatePageAvatar(currentProfileData);
+        renderReels();
+        return;
+      }
+    }
+
+    // Only render skeleton if no reels are currently visible
+    if (allReels.length === 0) {
+      renderSkeleton();
+    }
+
+    // 2. Fetch from Live API server (Render / Local)
     try {
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 2500); // 2.5s fast timeout
+      // On manual refresh allow up to 8s; on initial load 4s
+      const timeoutId = setTimeout(() => controller.abort(), forceRefresh ? 8000 : 4000);
 
+      const cacheBuster = `_t=${Date.now()}`;
       const res = await fetch(
-        `${API_BASE_URL}/api/reels?username=${encodeURIComponent(targetUser)}&sort=${currentSort}&limit=0`,
+        `${API_BASE_URL}/api/reels?username=${encodeURIComponent(targetUser)}&sort=${currentSort}&limit=0&${cacheBuster}`,
         { signal: controller.signal }
       );
       clearTimeout(timeoutId);
@@ -224,34 +298,56 @@ export function initInstagramReels({ showToast, triggerConfetti }) {
           isLiveBackend = true;
           allReels = json.data;
           currentProfileData = json.profile || {};
+          // Store fresh data in 1-hour local cache
+          setLocalCache(json.data, json.profile, json.total_count || allReels.length, json.last_synced, true);
           updateSyncIndicator(true, json.last_synced);
           updateDynamicMetrics(json.profile, json.total_count || allReels.length);
           updatePageAvatar(currentProfileData);
           renderReels();
+
+          if (forceRefresh) {
+            if (showToast) showToast(`Updated! Synced ${json.data.length} latest reels`);
+            if (triggerConfetti) triggerConfetti();
+          }
           return;
         }
       }
     } catch (e) {
-      // Backend not running or timeout -> proceed to fallback
+      // Backend not running, sleeping cold-start, or network issue -> proceed to fallback
     }
 
-    // 2. Seamless Static Fallback
+    // 3. Seamless Static Fallback
     try {
-      const fallbackRes = await fetch('/data/reels-fallback.json');
+      const fallbackRes = await fetch(`/data/reels-fallback.json?_t=${Date.now()}`);
       if (fallbackRes.ok) {
         const fallbackData = await fallbackRes.json();
         const posts = fallbackData.posts || [];
         isLiveBackend = false;
         allReels = sortReelItems(posts, currentSort);
         currentProfileData = fallbackData.profile || {};
+        // Cache fallback data for 1 hour so repeat visits are instant
+        setLocalCache(allReels, fallbackData.profile, fallbackData.posts_count || allReels.length, fallbackData.profile?.scraped_at, false);
         updateSyncIndicator(false, fallbackData.profile?.scraped_at);
         updateDynamicMetrics(fallbackData.profile, fallbackData.posts_count || allReels.length);
         updatePageAvatar(currentProfileData);
         renderReels();
+
+        if (forceRefresh) {
+          if (showToast) showToast('Latest reels refreshed from backup cache');
+        }
         return;
       }
     } catch (err) {
       console.warn('[Reels] Fallback load failed:', err);
+    }
+
+    // 4. Stale cache recovery
+    const staleCache = getLocalCache();
+    if (staleCache && staleCache.data.length > 0) {
+      allReels = sortReelItems(staleCache.data, currentSort);
+      currentProfileData = staleCache.profile || {};
+      renderReels();
+      return;
     }
 
     // Error state
@@ -659,6 +755,37 @@ export function initInstagramReels({ showToast, triggerConfetti }) {
       closeReelModal();
     }
   });
+
+  // Live Sync / Refresh Button (1-hour cache bypass)
+  const refreshBtn = document.getElementById('reels-refresh-btn');
+  const refreshText = document.getElementById('reels-refresh-btn-text');
+
+  if (refreshBtn) {
+    refreshBtn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      if (refreshBtn.disabled) return;
+
+      refreshBtn.disabled = true;
+      refreshBtn.classList.add('is-syncing');
+      if (refreshText) refreshText.textContent = 'Syncing...';
+
+      try {
+        await fetchReels({ forceRefresh: true });
+
+        if (refreshText) refreshText.textContent = 'Synced!';
+        setTimeout(() => {
+          if (refreshText) refreshText.textContent = 'Sync Latest';
+          refreshBtn.disabled = false;
+          refreshBtn.classList.remove('is-syncing');
+        }, 1800);
+      } catch (err) {
+        if (refreshText) refreshText.textContent = 'Sync Latest';
+        refreshBtn.disabled = false;
+        refreshBtn.classList.remove('is-syncing');
+        if (showToast) showToast('Could not reach server. Using cached reels.');
+      }
+    });
+  }
 
   // Kick off initial load
   fetchReels();

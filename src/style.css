@@ -1637,6 +1637,79 @@ button {
   color: #ff3b30;
 }
 
+/* Reels Header Controls Row (Pill Sorts + Sync Button) */
+.reels-controls-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Apple Capsule Sync / Refresh Button */
+.btn-sync-reels {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background-color: #ffffff;
+  color: var(--text-dark);
+  border: 1px solid var(--border-light);
+  padding: 8px 16px;
+  border-radius: var(--radius-capsule);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  outline: none;
+  white-space: nowrap;
+}
+
+.btn-sync-reels:hover:not(:disabled) {
+  background-color: #f5f5f7;
+  border-color: #d1d1d6;
+  color: var(--accent-blue);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+.btn-sync-reels:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-sync-reels .sync-icon {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.2s ease;
+}
+
+.btn-sync-reels.is-syncing .sync-icon {
+  animation: syncRotate 0.85s linear infinite;
+  color: var(--accent-blue);
+}
+
+@keyframes syncRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .reels-controls-row {
+    width: 100%;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .btn-sync-reels {
+    padding: 7px 12px;
+    font-size: 0.78rem;
+  }
+}
+
 /* ==========================================================================
    REELS GRID LAYOUT
    ========================================================================== */
